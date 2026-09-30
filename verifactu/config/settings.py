@@ -97,6 +97,19 @@ class Settings(metaclass=_SettingsMeta):
         self.is_not_verifactu: str = ""
 
     @classmethod
+    def end_point_prefixes(cls, environment: Optional[str] = None):
+        """Devuelve los prefijos de endpoint (alta, req, validar)
+        correspondientes al entorno indicado: 'test' (por defecto)
+        o 'production'."""
+        if environment and environment.lower() in ("production", "prod"):
+            return (VeriFactuEndPointPrefixes.Production,
+                    VeriFactuEndPointPrefixes.ProductionReq,
+                    VeriFactuEndPointPrefixes.ProductionValidate)
+        return (VeriFactuEndPointPrefixes.Test,
+                VeriFactuEndPointPrefixes.TestReq,
+                VeriFactuEndPointPrefixes.TestValidate)
+
+    @classmethod
     def get(cls) -> "Settings":
         """Load settings (from disk when supported), or defaults."""
         cls._current = cls._get_default()

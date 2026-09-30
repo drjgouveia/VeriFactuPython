@@ -1,1 +1,9 @@
 /.venv
+__pycache__
+VerifactuPython.egg-info
+VerifactuPython/__pycache__/*
+VerifactuPython/*/__pycache__/*
+verifactu/*/*/__pycache__/*
+VeriFactu.egg-info/PKG-INFO
+VeriFactu.egg-info/SOURCES.txt
+*.pyc

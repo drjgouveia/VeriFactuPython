@@ -96,8 +96,12 @@ class InvoiceActionPost(InvoiceActionMessage):
 
     # ---------------- Guardado ----------------
 
-    def save(self, certificate=None):
-        """Contabiliza y envía a la AEAT el registro."""
+    def save(self, certificate=None, environment: str = None):
+        """Contabiliza y envía a la AEAT el registro.
+
+        El parámetro `environment` admite 'test' (por defecto) o
+        'production' para seleccionar el entorno de la AEAT.
+        """
         from verifactu.common.exceptions import SendException
         from verifactu.net.wsd import Wsd
 
@@ -118,7 +122,7 @@ class InvoiceActionPost(InvoiceActionMessage):
             return
 
         try:
-            self.execute_send(cert)
+            self.execute_send(cert, environment)
             self.process_response()
         except Exception as ex:
             send_exception = ex

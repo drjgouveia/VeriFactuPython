@@ -2,9 +2,9 @@ Metadata-Version: 2.4
 Name: VeriFactu
 Version: 1.0.68
 Summary: Generación, conservación y envío facturas VERI*FACTU de la AEAT
-Home-page: https://github.com/mdiago/VeriFactu
-Author: Manuel Diago
-Author-email: mdiago@irenesolutions.com
+Home-page: https://github.com/drjgouveia/VeriFactu
+Author: Diogo Gouveia
+Author-email: diogo.gouveia2@gmail.com
 License: GNU AFFERO GENERAL PUBLIC LICENSE
 Requires-Python: >=3.14
 Description-Content-Type: text/markdown

@@ -96,7 +96,7 @@ class InvoiceActionMessage(InvoiceActionData):
 
     @staticmethod
     def send_xml_bytes(xml: bytes, op: str = None, certificate=None,
-                       is_requirement: bool = False) -> str:
+                       is_requirement: bool = False, environment: str = None) -> str:
         """Envía un xml en formato binario a la AEAT."""
         if op is None:
             op = _Action
@@ -105,28 +105,29 @@ class InvoiceActionMessage(InvoiceActionData):
             raise ValueError("No se puede enviar un registro por requerimiento"
                              " en un sistema configurado como VERI*FACTU.")
 
-        url = (Settings.current.veri_factu_end_point_req_prefix if is_requirement
-               else Settings.current.veri_factu_end_point_prefix)
+        alta, req, _ = Settings.end_point_prefixes(environment)
+        url = req if is_requirement else alta
 
         action = f"{url}{op}"
         from verifactu.net.wsd import Wsd
         return Wsd.call(url, action, xml, certificate)
 
-    def send(self, certificate=None) -> str:
+    def send(self, certificate=None, environment: str = None) -> str:
         """Envía el registro a la AEAT."""
-        return self.send_xml_bytes(self._xml, self.action, certificate)
+        return self.send_xml_bytes(self._xml, self.action, certificate,
+                                   environment=environment)
 
     @property
     def action(self) -> str:
         return _Action
 
-    def execute_send(self, certificate=None):
+    def execute_send(self, certificate=None, environment: str = None):
         """Ejecuta el envío del registro."""
         if not self.posted:
             raise ValueError(
                 "No se puede enviar un registro no contabilizado (Posted = false).")
 
-        self._response = self.send(certificate)
+        self._response = self.send(certificate, environment)
 
         # https://github.com/mdiago/VeriFactu/issues/219
         if re.match(r"^<!DOCTYPE html>", self._response):
