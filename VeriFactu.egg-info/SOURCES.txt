@@ -1,0 +1,13 @@
+LICENSE
+README.md
+setup.py
+VeriFactu.egg-info/PKG-INFO
+VeriFactu.egg-info/SOURCES.txt
+VeriFactu.egg-info/dependency_links.txt
+VeriFactu.egg-info/top_level.txt
+verifactu/__init__.py
+verifactu/verifactu_end_point_prefixes.py
+verifactu/verifactu_environment.py
+verifactu/xml/__init__.py
+verifactu/xml/namespaces.py
+verifactu/xml/xml_parser.py

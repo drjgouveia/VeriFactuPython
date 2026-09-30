@@ -1,0 +1,22 @@
+Metadata-Version: 2.4
+Name: VeriFactu
+Version: 1.0.68
+Summary: Generación, conservación y envío facturas VERI*FACTU de la AEAT
+Home-page: https://github.com/mdiago/VeriFactu
+Author: Manuel Diago
+Author-email: mdiago@irenesolutions.com
+License: GNU AFFERO GENERAL PUBLIC LICENSE
+Requires-Python: >=3.14
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Dynamic: author
+Dynamic: author-email
+Dynamic: description
+Dynamic: description-content-type
+Dynamic: home-page
+Dynamic: license
+Dynamic: license-file
+Dynamic: requires-python
+Dynamic: summary
+
+Generación, conservación y envío de facturas VERI*FACTU para la AEAT.
